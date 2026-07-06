@@ -1,0 +1,84 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Calibri;}}
+\fs36\b Dead Wax \endash  Online Music Shop\b0\fs22\par
+\fs20\i Prototype package \endash  current build, July 2026\i0\fs22\par
+\par
+This package contains a working, clickable prototype of an independent record shop and label \endash  a customer storefront and a separate staff management backend. Both are self\endash contained HTML files that open directly in any modern browser.\par
+\par
+\fs28\b 1. Files included\b0\fs22\par
+\par
+\b Dead Wax.dc.html\b0  \endash  The customer storefront (the public website).\par
+\b Dead Wax Admin.dc.html\b0  \endash  The management / staff backend panel.\par
+\b support.js\b0  \endash  Shared runtime that both HTML files load. Keep it in the same folder. Do not edit.\par
+\b README.rtf\b0  \endash  This document.\par
+\par
+Note: these are the current versions of each file. Earlier drafts were edited in place and were not kept as separate files.\par
+\par
+\fs28\b 2. How to open\b0\fs22\par
+\par
+- Unzip all files into one folder (keep them together).\par
+- Double\endash click \b Dead Wax.dc.html\b0  to open the storefront.\par
+- Open \b Dead Wax Admin.dc.html\b0  for the staff backend (also linked from the storefront footer: \ldblquote Staff login\rdblquote ).\par
+- The two apps share data through the browser, so open them in the same browser for the connection to work.\par
+\par
+\fs28\b 3. Logins & roles (demo)\b0\fs22\par
+\par
+\b Customers\b0  \endash  On the storefront, \ldblquote Log in\rdblquote  / create an account. Any email works in the demo. Accounts have order history, a wishlist, and a membership tier (Digger free / Crate Club paid).\par
+\par
+\b Staff (backend)\b0  \endash  The backend opens to a staff sign\endash in screen. Any email/password works in the demo; choose a role at sign\endash in:\par
+- \b Owner\b0  \endash  full access. Sees every section plus \b Staff & Access\b0  and \b Settings\b0 . Can add/remove staff, assign roles, and control exactly which sections the Sales role may open.\par
+- \b Sales Manager\b0  \endash  limited access. Sees only the Dashboard and the sales/content sections the Owner has enabled. Cannot see Orders, Discounts, Members, Staff, or Settings.\par
+\par
+\fs28\b 4. Storefront features\b0\fs22\par
+\par
+- Home with a configurable featured\endash release hero (see section 7).\par
+- Browse records with genre filter, sort, and a Sale filter.\par
+- Working search (records + artists).\par
+- Album pages: formats, tracklist previews, ratings & reviews, stock, related releases, wishlist.\par
+- Track pages with waveform preview; artist and author profiles.\par
+- Books & writing, sectioned into Books, Short Stories, and Articles (each with a genre).\par
+- Newsroom (music & industry articles, category filters) with the Press / media kit folded in.\par
+- Wishlist, cart, and checkout that hands off to Shopify (see section 8), plus an order\endash confirmation page.\par
+- Info pages: About, Contact, FAQ, Shipping & Returns, Privacy, Terms.\par
+- Persistent mini\endash player that follows you across the site.\par
+- Social links; theme accent and marquee are adjustable via the design Tweaks panel.\par
+\par
+\fs28\b 5. Management backend features\b0\fs22\par
+\par
+- \b Catalog\b0  \endash  add / remove releases, with cover + audio upload fields.\par
+- \b Artists & Authors\b0  \endash  add people as Musician or Author, each with a category/genre from a long list.\par
+- \b Books & Writing\b0  \endash  add items to a section (Book / Short Story / Article) with a genre.\par
+- \b Newsroom & Press\b0  \endash  write articles (incl. an Industry category) and manage press contacts + coverage.\par
+- \b Clips & Content\b0  \endash  upload video / audio / photo sets.\par
+- \b Reviews\b0  \endash  approve or reject customer reviews.\par
+- \b Orders\b0  \endash  order list with advanceable status.\par
+- \b Discounts\b0  \endash  create promo codes, enable/disable, remove.\par
+- \b Members\b0  \endash  manage customer accounts and membership plans.\par
+- \b Staff & Access\b0  (Owner) \endash  manage staff accounts and what the Sales role can reach.\par
+- \b Settings\b0  (Owner) \endash  edit the site name, tagline, contact details, Terms, Privacy, and the featured\endash hero presentation.\par
+\par
+\fs28\b 6. How the two apps connect\b0\fs22\par
+\par
+The backend publishes its catalogue, roster, writing, staff, and settings to shared browser storage. The storefront reads it and updates when you return to its tab. So: publish or remove an item in the backend, switch to the storefront, and it appears/disappears. Editable text (site name, contacts, Terms, Privacy) flows the same way.\par
+\par
+\fs28\b 7. Featured\endash hero presentation (Settings)\b0\fs22\par
+\par
+The featured hero (home) and the album cover are a multi\endash layer, backend\endash controlled module:\par
+- \b Presentation\b0 : Sleeve & disc (gramophone) / Flat sleeve / Spinning disc / Framed sleeve.\par
+- \b Cover layer (pattern)\b0 : Diagonal stripes / Solid / Concentric grooves / Grid.\par
+- \b Area layer (background)\b0 : Plain / Warm panel / Dark panel.\par
+- \b Right content order\b0 : Kicker\endash Title\endash Artist\endash Blurb / Title\endash first / Title & Artist only.\par
+The backend shows \b live thumbnail previews\b0  of each presentation and each layer \endash  click a thumbnail to select it. The chosen preset applies to both the home hero and album pages.\par
+\par
+\fs28\b 8. Shopify checkout\b0\fs22\par
+\par
+The cart \ldblquote Continue to secure checkout\rdblquote  button hands off to your Shopify store. Set your real store URL in the storefront design Tweaks panel (Checkout \endash  shopifyUrl); it defaults to a placeholder. Because a prototype has no server, the in\endash app confirmation page stands in for Shopify\rquote s real order\endash complete return.\par
+\par
+\fs28\b 9. Known limitations & recommended next steps\b0\fs22\par
+\par
+- \b Cover images\b0 : covers are styled placeholders. Real images need proper image hosting (store the file on a CDN / host and save its URL); browser storage can\rquote t hold a real image library. Titles and catalog numbers on covers are already editable.\par
+- \b Persistence\b0 : all data lives in the browser for the demo. A production build needs a real database, authentication, and server\endash side Shopify integration.\par
+- \b Suggested next steps\b0 : URL\endash based cover images; extend the hero presets to album pages; real staff authentication; connect orders/inventory to Shopify.\par
+\par
+\i Dead Wax is a fictional shop created for this prototype. Replace names, copy, and branding as needed.\i0\par
+}
