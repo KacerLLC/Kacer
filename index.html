@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dead Wax — Online Music Shop</title>
-  <meta http-equiv="refresh" content="0; url=Dead_Wax.dc.html">
-  <link rel="canonical" href="Dead_Wax.dc.html">
-  <style>
-    html, body { margin: 0; height: 100%; background: #f0e9da; color: #211d18;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .wrap { height: 100%; display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 14px; text-align: center; }
-    a { color: #c14a24; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-  <div class="wrap">
-    <div style="font-weight: 800; font-size: 22px; letter-spacing: -0.01em;">DEAD WAX</div>
-    <div>Loading the store… if nothing happens, <a href="Dead_Wax.dc.html">enter here</a>.</div>
-  </div>
-  <script>window.location.replace('Dead_Wax.dc.html');</script>
+<x-dc>
+<helmet>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { background:#000; height:100%; }
+</style>
+</helmet>
+
+<div style="position:relative;width:100%;height:100vh;background:#000;">
+  <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="hero" shape="rect" fit="contain" src="uploads/ChatGPT Image Jul 8, 2026, 03_04_57 PM.png" placeholder="Drop the Kacer artwork" hint-size="100%,100%">
+  </x-import>
+</div>
+</x-dc>
 </body>
 </html>
