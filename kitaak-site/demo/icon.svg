@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Kitaak logo (v2.99.20, per the provided design): a rounded-square speech
+       bubble with a short bottom-left tail drawn in a DEEP NAVY outline, a blue
+       play triangle on the LEFT, and a graduated blue waveform (light peak →
+       navy) to its right. -->
+  <path d="M44 8 H84 A24 24 0 0 1 108 32 V72 A24 24 0 0 1 84 96 H44 L26 112 L21 83 V32 A24 24 0 0 1 44 8 Z"
+        fill="#ffffff" stroke="#26396b" stroke-width="7" stroke-linejoin="round"/>
+  <!-- play triangle, left, pointing right -->
+  <path d="M40 42 L40 66 L58 54 Z" fill="#3f7de8"/>
+  <!-- graduated waveform bars — up then down, light peak to navy -->
+  <g stroke-linecap="round" fill="none" stroke-width="7">
+    <path d="M62 41v26" stroke="#8fb3f2"/>
+    <path d="M71 34v40" stroke="#bcd3f7"/>
+    <path d="M80 28v52" stroke="#d0e0fa"/>
+    <path d="M89 35v38" stroke="#5f8bea"/>
+    <path d="M98 42v24" stroke="#2b3f70"/>
+  </g>
+</svg>
