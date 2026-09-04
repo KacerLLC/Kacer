@@ -31,7 +31,7 @@
   --size-adj: 1;
   --fs-h1: calc(clamp(2.25rem, 1.3rem + 4.1vw, 4.75rem) * var(--size-adj));
   --fs-h2: calc(clamp(1.5rem, 1.2rem + 1.25vw, 2.125rem) * var(--size-adj));
-  --fs-lead: calc(clamp(1.125rem, 1.02rem + .55vw, 1.4rem) * var(--size-adj));
+  --fs-lead: calc(clamp(1.2rem, 1.06rem + .7vw, 1.4rem) * var(--size-adj));
   --fs-body: calc(clamp(1.0625rem, 1rem + .3vw, 1.1875rem) * var(--size-adj));
   --fs-quote: calc(clamp(1.375rem, 1.1rem + 1.4vw, 2rem) * var(--size-adj));
   --fs-small: calc(.9375rem * var(--size-adj));
@@ -41,7 +41,7 @@
   --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --w-display: 700; --w-h2: 650; --w-body: 400; --w-strong: 600;
+  --w-display: 700; --w-h2: 650; --w-quote: 500; --w-body: 400; --w-strong: 600;
   --ls-display: -0.025em; --ls-h2: -0.015em; --ls-mono: 0.08em;
   --lh-display: 1.04; --lh-body: 1.6;
   --fvs-display: normal; --fvs-body: normal;
@@ -61,6 +61,7 @@
     --accent-ink: #1a0d08;
     --accent-soft: #3a1f15;
     --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px -16px rgba(0, 0, 0, .7);
+    --focus: #8ab4ff;
   }
 }
 
@@ -120,6 +121,7 @@ h2:first-child { margin-top: 0; }
 /* ---------- header ---------- */
 .site-head {
   position: sticky; top: 0; z-index: 50;
+  background: var(--bg);
   background: color-mix(in srgb, var(--bg) 82%, transparent);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   backdrop-filter: saturate(160%) blur(14px);
@@ -135,7 +137,7 @@ h2:first-child { margin-top: 0; }
   font-variation-settings: var(--fvs-display);
   font-weight: var(--w-display);
   font-size: 1.35rem;
-  letter-spacing: var(--ls-display);
+  letter-spacing: calc(var(--ls-display) / 2);
   line-height: 1;
 }
 .brand img { width: 30px; height: 30px; border-radius: 8px; }
@@ -226,14 +228,17 @@ h2:first-child { margin-top: 0; }
 /* ---------- prose ---------- */
 .prose { padding: clamp(8px, 2vw, 24px) 0 clamp(64px, 8vw, 112px); }
 .prose > * { max-width: var(--measure); }
+.prose > h2 { max-width: 30ch; }
+.prose h2 + p.quote { margin-top: .8em; }
 .prose > p { margin: 0 0 1.15em; text-wrap: pretty; }
 .prose p.quote {
   margin: 1.6em 0 1.8em;
   padding: .35em 0 .35em 1.1em;
   border-left: 3px solid var(--accent);
+  max-width: 40ch;
   font-family: var(--font-display);
   font-variation-settings: var(--fvs-display);
-  font-weight: var(--w-h2);
+  font-weight: var(--w-quote);
   font-size: var(--fs-quote);
   letter-spacing: var(--ls-h2);
   line-height: 1.25;
@@ -258,9 +263,9 @@ h2:first-child { margin-top: 0; }
 }
 .site-foot .wrap {
   display: grid;
-  grid-template-columns: 1.4fr auto 1fr;
+  grid-template-columns: 1fr auto max-content;
   gap: 24px 40px;
-  align-items: start;
+  align-items: baseline;
 }
 .site-foot .tag {
   font-family: var(--font-display);
@@ -268,15 +273,16 @@ h2:first-child { margin-top: 0; }
   font-weight: var(--w-h2);
   letter-spacing: var(--ls-h2);
   font-size: 1.05rem;
+  line-height: 1.3;
   color: var(--ink);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .site-foot nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
 .site-foot nav a:hover { color: var(--ink); }
 .site-foot .wrap > div:last-child {
   justify-self: end; text-align: right;
   font-family: var(--font-mono);
-  font-size: .8rem;
+  font-size: .85rem;
   letter-spacing: .02em;
 }
 
@@ -301,6 +307,10 @@ h2:first-child { margin-top: 0; }
   width: max-content;
   min-width: 260px;
   max-width: min(320px, calc(100vw - 28px));
+  max-height: calc(100vh - 90px);
+  max-height: calc(100dvh - 90px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 8px;
   border: 1px solid var(--line); border-radius: var(--radius);
   background: var(--surface); box-shadow: var(--shadow);
@@ -353,6 +363,7 @@ h2:first-child { margin-top: 0; }
 }
 
 @media print {
+  :root { --bg: #fff; --bg-2: #fff; --surface: #fff; --ink: #000; --ink-2: #222; --muted: #444; --line: #bbb; --accent: #b8360f; --shadow: none; }
   .site-head, .font-switch, .cta, .menu-btn { display: none !important; }
   body { background: #fff; color: #000; }
 }
@@ -362,6 +373,28 @@ h2:first-child { margin-top: 0; }
    The active one is chosen by data-font on <html>; about.html lazy-loads
    the matching Google Fonts stylesheet.
    ========================================================================== */
+/* Funnel Display + Funnel Sans — Soft, calm humanist pair */
+html[data-font="soft"] {
+  --font-display: "Funnel Display", "Funnel Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Funnel Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Red Hat Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --w-display: 600;
+  --w-h2: 600;
+  --w-body: 435;
+  --w-strong: 620;
+  --ls-display: -0.022em;
+  --ls-h2: -0.015em;
+  --ls-mono: 0.1em;
+  --lh-display: 1.04;
+  --lh-body: 1.62;
+  --fvs-display: normal;
+  --fvs-body: normal;
+  --size-adj: 1.02;
+  --mono-transform: uppercase;
+  --w-quote: 460;
+  --measure: 60ch;
+}
+
 /* Fraunces + Hanken Grotesk — Editorial serif over a quiet grotesque */
 html[data-font="editorial"] {
   /* Fraunces optical size is left on auto so the wordmark, h2s and the h1 each get their own cut;
@@ -382,7 +415,10 @@ html[data-font="editorial"] {
   --fvs-body: normal;
   --size-adj: 1.04;
   --mono-transform: uppercase;
+  --w-quote: 440;
 }
+html[data-font="editorial"] h1 { word-spacing: .05em; }
+html[data-font="editorial"] .prose p.quote { font-variation-settings: "SOFT" 100, "WONK" 0; }
 
 /* Familjen Grotesk + Instrument Sans — Characterful grotesk headlines, calm body */
 html[data-font="grotesk"] {
@@ -402,26 +438,7 @@ html[data-font="grotesk"] {
   --fvs-body: normal;
   --size-adj: 1;
   --mono-transform: uppercase;
-}
-
-/* Funnel Display + Funnel Sans — Soft, calm humanist pair */
-html[data-font="soft"] {
-  --font-display: "Funnel Display", "Funnel Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-body: "Funnel Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "Red Hat Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-  --w-display: 600;
-  --w-h2: 600;
-  --w-body: 435;
-  --w-strong: 620;
-  --ls-display: -0.022em;
-  --ls-h2: -0.015em;
-  --ls-mono: 0.1em;
-  --lh-display: 1.04;
-  --lh-body: 1.62;
-  --fvs-display: normal;
-  --fvs-body: normal;
-  --size-adj: 1.02;
-  --mono-transform: uppercase;
+  --w-quote: 500;
 }
 
 /* Mona Sans Wide + Martian Mono — Width axis: expanded headlines, normal body */
@@ -433,7 +450,7 @@ html[data-font="wide"] {
   --w-display: 640;
   --w-h2: 560;
   --w-body: 450;
-  --w-strong: 640;
+  --w-strong: 600;
   --ls-display: -0.01em;
   --ls-h2: 0;
   --ls-mono: 0.06em;
@@ -443,7 +460,9 @@ html[data-font="wide"] {
   --fvs-body: normal;
   --size-adj: 0.98;
   --mono-transform: uppercase;
+  --w-quote: 500;
 }
+html[data-font="wide"] .site-foot .wrap > div:last-child { font-size: .72rem; letter-spacing: 0; }
 
 /* Instrument Sans + Geist Mono — Neutral, product-grade Swiss sans */
 html[data-font="swiss"] {
@@ -463,6 +482,8 @@ html[data-font="swiss"] {
   --fvs-body: normal;
   --size-adj: 1;
   --mono-transform: uppercase;
+  --w-quote: 500;
+  --measure: 56ch;
 }
 
 /* Bricolage Grotesque + Space Mono — The current pair, tuned (auto optical size) */
@@ -475,7 +496,7 @@ html[data-font="incumbent"] {
   --w-h2: 600;
   --w-body: 430;
   --w-strong: 600;
-  --ls-display: -0.02em;
+  --ls-display: -0.012em;
   --ls-h2: -0.015em;
   --ls-mono: 0.08em;
   --lh-display: 1.05;
@@ -484,5 +505,6 @@ html[data-font="incumbent"] {
   --fvs-body: normal;
   --size-adj: 1;
   --mono-transform: uppercase;
+  --w-quote: 500;
 }
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-font="editorial">
+<html lang="en" data-font="soft">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,14 +11,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Default type system (works without JavaScript). -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Hanken+Grotesk:wght@300..700&amp;family=DM+Mono:wght@500&amp;display=swap" data-font-link="editorial">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&amp;family=Funnel+Sans:ital,wght@0,300..800;1,300..800&amp;family=Red+Hat+Mono:wght@300..700&amp;display=swap" data-font-link="soft">
 <script>
 /* Font themes. Each entry is a complete type system defined in assets/site.css
    (html[data-font="id"]) plus the Google Fonts stylesheet that powers it.
    Pick one with the floating "Aa" switcher, or share a link like about.html?font=id.
-   To lock the site to one theme: set data-font on <html> to that id, point the
-   <link> above at its href, and delete the .font-switch element. */
+   To lock the site to one theme: set data-font on <html> and data-font-link on the
+   <link> above to that id, point that href at the theme's URL, set
+   KITAAK_FONT_LOCKED to true (which disables ?font=, saved choices and the switcher),
+   and optionally delete the .font-switch element. */
+window.KITAAK_FONT_LOCKED = false;
 window.KITAAK_FONTS = {
+  "soft": {
+    "name": "Funnel Display + Funnel Sans",
+    "note": "Soft, calm humanist pair",
+    "href": "https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Red+Hat+Mono:wght@300..700&display=swap"
+  },
   "editorial": {
     "name": "Fraunces + Hanken Grotesk",
     "note": "Editorial serif over a quiet grotesque",
@@ -28,11 +36,6 @@ window.KITAAK_FONTS = {
     "name": "Familjen Grotesk + Instrument Sans",
     "note": "Characterful grotesk headlines, calm body",
     "href": "https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=DM+Mono:wght@400;500&display=swap"
-  },
-  "soft": {
-    "name": "Funnel Display + Funnel Sans",
-    "note": "Soft, calm humanist pair",
-    "href": "https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Red+Hat+Mono:wght@300..700&display=swap"
   },
   "wide": {
     "name": "Mona Sans Wide + Martian Mono",
@@ -52,9 +55,12 @@ window.KITAAK_FONTS = {
 };
 (function () {
   var T = window.KITAAK_FONTS, d = document.documentElement, id = null;
+  function has(k) { return typeof k === "string" && Object.prototype.hasOwnProperty.call(T, k); }
+  if (window.KITAAK_FONT_LOCKED) return;
   try { id = new URLSearchParams(location.search).get("font"); } catch (e) {}
-  if (!id || !T[id]) { try { id = localStorage.getItem("kitaak-font"); } catch (e) {} }
-  if (!id || !T[id]) id = d.getAttribute("data-font");
+  if (!has(id)) { try { id = localStorage.getItem("kitaak-font"); } catch (e) {} }
+  if (!has(id)) id = d.getAttribute("data-font");
+  if (!has(id)) return;
   if (!document.querySelector('link[data-font-link="' + id + '"]')) {
     var l = document.createElement("link");
     l.rel = "stylesheet"; l.href = T[id].href; l.setAttribute("data-font-link", id);
@@ -98,9 +104,9 @@ window.KITAAK_FONTS = {
 <div class="cta"><a class="btn primary" href="contact.html#start">Get Started</a><a class="btn" href="application.html">Explore the Application</a></div>
 </div></section>
 
-<footer class="site-foot"><div class="wrap"><div><div class="tag">Kitaak — Where Music Meets Communication.</div><div>Connect. Communicate. Enjoy the Music.</div></div><nav><a href="index.html">Home</a><a href="application.html">Application</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></nav><div>© <span id="yr"></span> Kitaak · A Kacer LLC product</div></div></footer>
+<footer class="site-foot"><div class="wrap"><div><div class="tag">Kitaak — Where Music Meets Communication.</div><div>Connect. Communicate. Enjoy the Music.</div></div><nav><a href="index.html">Home</a><a href="application.html">Application</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></nav><div>© <span id="yr">2026</span> Kitaak · A Kacer LLC product</div></div></footer>
 
-<details class="font-switch" id="fontSwitch"><summary aria-label="Choose type system"><span class="aa">Aa</span><span class="lbl">Font</span></summary><div class="menu" role="menu"><div class="hd">Type system</div></div></details>
+<details class="font-switch" id="fontSwitch" hidden><summary aria-label="Choose type system"><span class="aa">Aa</span><span class="lbl">Font</span></summary><div class="menu" role="group" aria-labelledby="fontSwitchHd"><div class="hd" id="fontSwitchHd">Type system</div></div></details>
 
 <script>
 document.getElementById("yr").textContent = new Date().getFullYear();
@@ -110,29 +116,37 @@ document.addEventListener("click", function (e) {
 });
 (function () {
   var T = window.KITAAK_FONTS || {}, d = document.documentElement;
-  var sw = document.getElementById("fontSwitch"), box = sw && sw.querySelector(".menu");
-  if (!box) return;
-  function setFont(id) {
-    if (!T[id]) return;
+  var sw = document.getElementById("fontSwitch"), box = sw && sw.querySelector(".menu"), toggle = sw && sw.querySelector("summary");
+  if (!box || window.KITAAK_FONT_LOCKED) return;
+  function has(k) { return typeof k === "string" && Object.prototype.hasOwnProperty.call(T, k); }
+  function setFont(id, persist) {
+    if (!has(id)) return;
     if (!document.querySelector('link[data-font-link="' + id + '"]')) {
       var l = document.createElement("link");
       l.rel = "stylesheet"; l.href = T[id].href; l.setAttribute("data-font-link", id);
       document.head.appendChild(l);
     }
     d.setAttribute("data-font", id);
-    try { localStorage.setItem("kitaak-font", id); } catch (e) {}
+    if (persist) { try { localStorage.setItem("kitaak-font", id); } catch (e) {} }
     box.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.id === id)); });
+  }
+  function close(refocus) {
+    if (!sw.open) return;
+    var inside = sw.contains(document.activeElement);
+    sw.open = false;
+    if (refocus || inside) toggle.focus();
   }
   Object.keys(T).forEach(function (id) {
     var b = document.createElement("button");
-    b.type = "button"; b.dataset.id = id; b.setAttribute("role", "menuitemradio");
+    b.type = "button"; b.dataset.id = id;
     b.innerHTML = "<span>" + T[id].name + "</span><small>" + T[id].note + "</small>";
-    b.addEventListener("click", function () { setFont(id); sw.open = false; });
+    b.addEventListener("click", function () { setFont(id, true); close(true); });
     box.appendChild(b);
   });
-  setFont(d.getAttribute("data-font"));
-  document.addEventListener("click", function (e) { if (sw.open && !sw.contains(e.target)) sw.open = false; });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") sw.open = false; });
+  setFont(d.getAttribute("data-font"), false);
+  sw.hidden = false;
+  document.addEventListener("click", function (e) { if (sw.open && !sw.contains(e.target)) close(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(false); });
 })();
 </script>
 </body>
