@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" data-font="editorial">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Kitaak</title>
+<meta name="description" content="About Kitaak — bringing music and communication together.">
+<meta name="theme-color" content="#fbf9f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131211" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="demo/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Default type system (works without JavaScript). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Hanken+Grotesk:wght@300..700&amp;family=DM+Mono:wght@500&amp;display=swap" data-font-link="editorial">
+<script>
+/* Font themes. Each entry is a complete type system defined in assets/site.css
+   (html[data-font="id"]) plus the Google Fonts stylesheet that powers it.
+   Pick one with the floating "Aa" switcher, or share a link like about.html?font=id.
+   To lock the site to one theme: set data-font on <html> to that id, point the
+   <link> above at its href, and delete the .font-switch element. */
+window.KITAAK_FONTS = {
+  "editorial": {
+    "name": "Fraunces + Hanken Grotesk",
+    "note": "Editorial serif over a quiet grotesque",
+    "href": "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Hanken+Grotesk:wght@300..700&family=DM+Mono:wght@500&display=swap"
+  },
+  "grotesk": {
+    "name": "Familjen Grotesk + Instrument Sans",
+    "note": "Characterful grotesk headlines, calm body",
+    "href": "https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=DM+Mono:wght@400;500&display=swap"
+  },
+  "soft": {
+    "name": "Funnel Display + Funnel Sans",
+    "note": "Soft, calm humanist pair",
+    "href": "https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Red+Hat+Mono:wght@300..700&display=swap"
+  },
+  "wide": {
+    "name": "Mona Sans Wide + Martian Mono",
+    "note": "Width axis: expanded headlines, normal body",
+    "href": "https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Martian+Mono:wdth,wght@112.5,100..800&display=swap"
+  },
+  "swiss": {
+    "name": "Instrument Sans + Geist Mono",
+    "note": "Neutral, product-grade Swiss sans",
+    "href": "https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Geist+Mono:wght@400..600&display=swap"
+  },
+  "incumbent": {
+    "name": "Bricolage Grotesque + Space Mono",
+    "note": "The current pair, tuned (auto optical size)",
+    "href": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Space+Mono:wght@400;700&display=swap"
+  }
+};
+(function () {
+  var T = window.KITAAK_FONTS, d = document.documentElement, id = null;
+  try { id = new URLSearchParams(location.search).get("font"); } catch (e) {}
+  if (!id || !T[id]) { try { id = localStorage.getItem("kitaak-font"); } catch (e) {} }
+  if (!id || !T[id]) id = d.getAttribute("data-font");
+  if (!document.querySelector('link[data-font-link="' + id + '"]')) {
+    var l = document.createElement("link");
+    l.rel = "stylesheet"; l.href = T[id].href; l.setAttribute("data-font-link", id);
+    document.head.appendChild(l);
+  }
+  d.setAttribute("data-font", id);
+})();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site-head"><div class="wrap"><a class="brand" href="index.html"><img src="demo/icon.svg" alt=""> kitaak</a><button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="siteNav">☰</button><nav class="nav" id="siteNav"><a href="index.html">Home</a><a href="application.html">Application</a><a href="about.html" class="on" aria-current="page">About Us</a><a href="contact.html">Contact</a><a class="btn primary" href="contact.html#start">Get Started</a></nav></div></header>
+
+<section class="hero"><div class="wrap"><div class="eyebrow">About Kitaak</div><h1>Bringing Music and Communication Together</h1><p class="lead">At Kitaak, we believe the workplace can be productive, connected, and enjoyable at the same time.</p></div></section>
+
+<section><div class="wrap prose">
+<p>Kitaak is a communication and music application designed to bring background music into the workday while keeping important conversations at the center of attention. Our platform combines workplace communication with an intelligent music experience that adapts when people need to talk.</p>
+<p>When a call or voice communication begins, Kitaak is designed to automatically lower the music so conversations can be heard clearly. When the conversation ends, the music can smoothly return to its preset level — creating a more natural and uninterrupted experience without constantly adjusting volume controls.</p>
+
+<h2>Music That Works Around Your Conversations</h2>
+<p>Music can help create an enjoyable atmosphere, but communication should never be interrupted by it.</p>
+<p>That is why Kitaak is built around the idea of <b>communication priority</b>. Whether employees are chatting, receiving a voice message, or participating in a conversation, the application's audio experience is designed to adapt to the moment.</p>
+<p>Our goal is simple:</p>
+<p class="quote">Enjoy the music when you can. Hear the conversation when you need to.</p>
+
+<h2>Built for Modern Teams</h2>
+<p>Kitaak is designed for organizations, teams, workplaces, and communities looking for a different way to combine communication and music.</p>
+<p>Through Kitaak, users can stay connected with colleagues while enjoying a shared audio environment designed to fit naturally into the rhythm of the workday.</p>
+
+<h2>What the application does</h2>
+<p>Kitaak is a full communication suite — direct messages, group chats with an order of speaking, voice and video calls, voice messages, files and contacts with clear communication signs — paired with a curated music library. Groups can run <b>instant speech</b> sessions in which selected speakers talk live in front of everyone. Families and companies get their own plans and pages, and administrators keep control of hours, shields and the workplace music selection.</p>
+
+<h2>Our Vision</h2>
+<p>We envision a future where workplace technology does more than simply deliver messages and notifications. Technology should help create a better atmosphere, encourage connection, and adapt intelligently to the people using it.</p>
+<p>Kitaak is working toward making music and communication feel less like two separate experiences — and more like one seamless part of everyday life.</p>
+
+<h2>Welcome to Kitaak</h2>
+<p class="quote">Connect. Communicate. Enjoy the Music.</p>
+<p>Welcome to a new way of experiencing communication in the workplace.</p>
+<p class="muted">Kitaak is a product of Kacer LLC.</p>
+<div class="cta"><a class="btn primary" href="contact.html#start">Get Started</a><a class="btn" href="application.html">Explore the Application</a></div>
+</div></section>
+
+<footer class="site-foot"><div class="wrap"><div><div class="tag">Kitaak — Where Music Meets Communication.</div><div>Connect. Communicate. Enjoy the Music.</div></div><nav><a href="index.html">Home</a><a href="application.html">Application</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></nav><div>© <span id="yr"></span> Kitaak · A Kacer LLC product</div></div></footer>
+
+<details class="font-switch" id="fontSwitch"><summary aria-label="Choose type system"><span class="aa">Aa</span><span class="lbl">Font</span></summary><div class="menu" role="menu"><div class="hd">Type system</div></div></details>
+
+<script>
+document.getElementById("yr").textContent = new Date().getFullYear();
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".menu-btn");
+  if (b) { var open = document.querySelector(".nav").classList.toggle("open"); b.setAttribute("aria-expanded", String(open)); }
+});
+(function () {
+  var T = window.KITAAK_FONTS || {}, d = document.documentElement;
+  var sw = document.getElementById("fontSwitch"), box = sw && sw.querySelector(".menu");
+  if (!box) return;
+  function setFont(id) {
+    if (!T[id]) return;
+    if (!document.querySelector('link[data-font-link="' + id + '"]')) {
+      var l = document.createElement("link");
+      l.rel = "stylesheet"; l.href = T[id].href; l.setAttribute("data-font-link", id);
+      document.head.appendChild(l);
+    }
+    d.setAttribute("data-font", id);
+    try { localStorage.setItem("kitaak-font", id); } catch (e) {}
+    box.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.id === id)); });
+  }
+  Object.keys(T).forEach(function (id) {
+    var b = document.createElement("button");
+    b.type = "button"; b.dataset.id = id; b.setAttribute("role", "menuitemradio");
+    b.innerHTML = "<span>" + T[id].name + "</span><small>" + T[id].note + "</small>";
+    b.addEventListener("click", function () { setFont(id); sw.open = false; });
+    box.appendChild(b);
+  });
+  setFont(d.getAttribute("data-font"));
+  document.addEventListener("click", function (e) { if (sw.open && !sw.contains(e.target)) sw.open = false; });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") sw.open = false; });
+})();
+</script>
+</body>
+</html>

@@ -29,7 +29,7 @@
 
   /* Fluid type scale (every step is multiplied by the theme's --size-adj). */
   --size-adj: 1;
-  --fs-h1: calc(clamp(2.5rem, 1.55rem + 4.1vw, 4.75rem) * var(--size-adj));
+  --fs-h1: calc(clamp(2.25rem, 1.3rem + 4.1vw, 4.75rem) * var(--size-adj));
   --fs-h2: calc(clamp(1.5rem, 1.2rem + 1.25vw, 2.125rem) * var(--size-adj));
   --fs-lead: calc(clamp(1.125rem, 1.02rem + .55vw, 1.4rem) * var(--size-adj));
   --fs-body: calc(clamp(1.0625rem, 1rem + .3vw, 1.1875rem) * var(--size-adj));
@@ -104,7 +104,7 @@ h1 {
   font-weight: var(--w-display);
   letter-spacing: var(--ls-display);
   line-height: var(--lh-display);
-  max-width: 18ch;
+  max-width: 22ch;
 }
 h2 {
   font-size: var(--fs-h2);
@@ -339,6 +339,9 @@ h2:first-child { margin-top: 0; }
   h1 { max-width: none; }
   .site-foot .wrap { grid-template-columns: 1fr; }
   .site-foot .wrap > div:last-child { justify-self: start; text-align: left; }
+  .font-switch { right: 14px; bottom: 14px; }
+  .font-switch summary { padding: 9px 12px; }
+  .font-switch summary .lbl { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -356,4 +359,127 @@ h2:first-child { margin-top: 0; }
    The active one is chosen by data-font on <html>; about.html lazy-loads
    the matching Google Fonts stylesheet.
    ========================================================================== */
-/* @@FONT_THEMES@@ */
+/* Fraunces + Hanken Grotesk — Editorial serif over a quiet grotesque */
+html[data-font="editorial"] {
+  /* Fraunces optical size is left on auto so the wordmark, h2s and the h1 each get their own cut;
+     WONK is pinned to 0 (served default is 1) for calm, upright letterforms. */
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Hanken Grotesk", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --w-display: 600;
+  --w-h2: 530;
+  --w-body: 420;
+  --w-strong: 600;
+  --ls-display: -0.01em;
+  --ls-h2: 0;
+  --ls-mono: 0.1em;
+  --lh-display: 1.08;
+  --lh-body: 1.6;
+  --fvs-display: "SOFT" 30, "WONK" 0;
+  --fvs-body: normal;
+  --size-adj: 1.04;
+  --mono-transform: uppercase;
+}
+
+/* Familjen Grotesk + Instrument Sans — Characterful grotesk headlines, calm body */
+html[data-font="grotesk"] {
+  --font-display: "Familjen Grotesk", "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-body: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --w-display: 660;
+  --w-h2: 620;
+  --w-body: 440;
+  --w-strong: 600;
+  --ls-display: -0.024em;
+  --ls-h2: -0.018em;
+  --ls-mono: 0.08em;
+  --lh-display: 1.05;
+  --lh-body: 1.6;
+  --fvs-display: normal;
+  --fvs-body: normal;
+  --size-adj: 1;
+  --mono-transform: uppercase;
+}
+
+/* Funnel Display + Funnel Sans — Soft, calm humanist pair */
+html[data-font="soft"] {
+  --font-display: "Funnel Display", "Funnel Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Funnel Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Red Hat Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --w-display: 600;
+  --w-h2: 600;
+  --w-body: 435;
+  --w-strong: 620;
+  --ls-display: -0.022em;
+  --ls-h2: -0.015em;
+  --ls-mono: 0.1em;
+  --lh-display: 1.04;
+  --lh-body: 1.62;
+  --fvs-display: normal;
+  --fvs-body: normal;
+  --size-adj: 1.02;
+  --mono-transform: uppercase;
+}
+
+/* Mona Sans Wide + Martian Mono — Width axis: expanded headlines, normal body */
+html[data-font="wide"] {
+  /* One family, two widths: the wdth axis is pushed out for display and left normal for text. */
+  --font-display: "Mona Sans", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Mona Sans", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --w-display: 640;
+  --w-h2: 560;
+  --w-body: 450;
+  --w-strong: 640;
+  --ls-display: -0.01em;
+  --ls-h2: 0;
+  --ls-mono: 0.06em;
+  --lh-display: 1.06;
+  --lh-body: 1.6;
+  --fvs-display: "wdth" 116;
+  --fvs-body: normal;
+  --size-adj: 0.98;
+  --mono-transform: uppercase;
+}
+
+/* Instrument Sans + Geist Mono — Neutral, product-grade Swiss sans */
+html[data-font="swiss"] {
+  --font-display: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-body: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --w-display: 700;
+  --w-h2: 600;
+  --w-body: 430;
+  --w-strong: 600;
+  --ls-display: -0.028em;
+  --ls-h2: -0.015em;
+  --ls-mono: 0.08em;
+  --lh-display: 1.07;
+  --lh-body: 1.62;
+  --fvs-display: normal;
+  --fvs-body: normal;
+  --size-adj: 1;
+  --mono-transform: uppercase;
+}
+
+/* Bricolage Grotesque + Space Mono — The current pair, tuned (auto optical size) */
+html[data-font="incumbent"] {
+  /* Optical size is left on auto: the h1 gets the display cut, body and wordmark the text cuts. */
+  --font-display: "Bricolage Grotesque", system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Bricolage Grotesque", system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --w-display: 620;
+  --w-h2: 600;
+  --w-body: 430;
+  --w-strong: 600;
+  --ls-display: -0.02em;
+  --ls-h2: -0.015em;
+  --ls-mono: 0.08em;
+  --lh-display: 1.05;
+  --lh-body: 1.6;
+  --fvs-display: normal;
+  --fvs-body: normal;
+  --size-adj: 1;
+  --mono-transform: uppercase;
+}
+
