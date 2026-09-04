@@ -298,7 +298,9 @@ h2:first-child { margin-top: 0; }
 .font-switch summary .aa { font-family: var(--font-display); font-weight: var(--w-display); font-size: 1rem; }
 .font-switch .menu {
   position: absolute; right: 0; bottom: calc(100% + 10px);
-  min-width: 250px;
+  width: max-content;
+  min-width: 260px;
+  max-width: min(320px, calc(100vw - 28px));
   padding: 8px;
   border: 1px solid var(--line); border-radius: var(--radius);
   background: var(--surface); box-shadow: var(--shadow);
@@ -311,7 +313,7 @@ h2:first-child { margin-top: 0; }
   color: var(--muted);
 }
 .font-switch button {
-  display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 12px;
+  display: block; width: 100%;
   padding: 9px 10px;
   border: 0; border-radius: 9px;
   background: transparent; color: var(--ink);
@@ -319,7 +321,8 @@ h2:first-child { margin-top: 0; }
 }
 .font-switch button:hover { background: var(--bg-2); }
 .font-switch button[aria-pressed="true"] { background: var(--accent-soft); color: var(--ink); }
-.font-switch button small { color: var(--muted); font-size: .75rem; }
+.font-switch button span { display: block; font-weight: var(--w-strong); }
+.font-switch button small { display: block; margin-top: 2px; color: var(--muted); font-size: .75rem; line-height: 1.35; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 760px) {
