@@ -12,16 +12,16 @@ p{margin:0 0 14px}.lead{font-size:19px;color:var(--ink-2);max-width:720px}.muted
 .btn:hover{transform:translateY(-1px)}.btn.primary{background:var(--rust);color:var(--rust-ink);border-color:transparent}.btn.dark{background:var(--dark);color:#f7f2e6;border-color:transparent}.btn.ghost{background:transparent}
 /* header */
 .site-head{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--panel) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.site-head .wrap{display:flex;align-items:flex-start;justify-content:space-between;height:68px;gap:16px}.site-head .nav,.site-head .menu-btn{align-self:center}
-.brand{display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;line-height:1;position:relative;z-index:2;padding:10px 14px 14px;background:var(--panel);border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r-md) var(--r-md);box-shadow:0 8px 16px -8px #20211f40,0 1px 2px #20211f14;transition:background .15s,box-shadow .15s;font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;font-stretch:100%;font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--ink)}
-.brand img{width:32px;height:32px}.brand span{font-size:13px;letter-spacing:.01em;padding-bottom:6px;position:relative}.brand span::after{content:"";position:absolute;left:4px;right:4px;bottom:0;height:2px;border-radius:2px;background:var(--rust)}.brand:hover{background:var(--panel-2);box-shadow:0 12px 20px -8px #20211f4d,0 1px 2px #20211f14}.brand:focus-visible{outline:2px solid var(--rust);outline-offset:-4px}.site-head{overflow:visible}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:92px;gap:16px}
+.brand{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-decoration:none;line-height:1;padding:10px;min-width:70px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-1);transition:background .15s,box-shadow .15s;font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;font-stretch:100%;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.brand img{width:32px;height:32px;display:block}.brand span{font-size:13px;letter-spacing:.01em;display:block}.brand:hover{background:var(--panel-2);box-shadow:0 12px 20px -8px #20211f4d,0 1px 2px #20211f14}.brand:focus-visible{outline:2px solid var(--rust);outline-offset:-4px}
 /* mock-up variants for the logo proposal */
 .brand.opt-a{flex-direction:row;padding:0;border:0;background:none;box-shadow:none;align-self:center}.brand.opt-a span{display:none}.brand.opt-a img{width:40px;height:40px}
 .brand.opt-e{flex-direction:row;padding:0;border:0;background:none;box-shadow:none;align-self:center}.brand.opt-e img{display:none}.brand.opt-e span{font-size:22px;border:0;padding:0;font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif}
 .nav{display:flex;gap:4px;align-items:center}.nav a{text-decoration:none;padding:9px 14px;border-radius:var(--pill);font-weight:600;color:var(--ink-2)}.nav a:hover,.nav a.on{background:var(--panel-2);color:var(--ink)}
 .nav .btn{margin-left:8px;padding:9px 16px}
 .menu-btn{display:none;min-width:44px;min-height:44px;background:none;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:20px;line-height:1}
-@media (max-width:820px){.nav{display:none;position:absolute;top:69px;left:0;right:0;background:var(--panel);border-top:1px solid var(--line);padding-top:22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:10px 4vw 14px}.nav.open{display:flex}.menu-btn{display:block}.nav .btn{margin:6px 0 0}}
+@media (max-width:820px){.nav{display:none;position:absolute;top:93px;left:0;right:0;background:var(--panel);padding-top:10px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:10px 4vw 14px}.nav.open{display:flex}.menu-btn{display:block}.nav .btn{margin:6px 0 0}}
 /* hero */
 .hero{padding:72px 0 56px;position:relative;overflow:hidden}
 .hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
